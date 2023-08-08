@@ -1,0 +1,479 @@
+  [1m[35m (71.6ms)[0m  [1m[35mCREATE DATABASE "music_development" ENCODING = 'unicode'[0m
+  [1m[35m (41.8ms)[0m  [1m[35mCREATE DATABASE "music_test" ENCODING = 'unicode'[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3812030406321535125)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230808174456)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230808174456"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-08 17:47:53.956820"], ["updated_at", "2023-08-08 17:47:53.956820"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3812030406321535125)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3812030406321535125)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIndex (20230808182748)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_session_token" ON "users" ("session_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230808182748"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3812030406321535125)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/session/new" for ::1 at 2023-08-08 16:12:09 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected local variable or method, expecting ')'
+            params[:user][:password]
+            ^~~~~~
+/Users/dennislee/app-academy/classwork/w7d2/music/app/controllers/sessions_controller.rb:12: syntax error, unexpected ')', expecting `end'
+        )
+        ^:
+  app/controllers/sessions_controller.rb:11:in `'
+
+Started POST "/__better_errors/234b18e93d8b4eef/variables" for ::1 at 2023-08-08 16:12:09 -0400
+Started GET "/session/new" for ::1 at 2023-08-08 16:12:32 -0400
+
+SyntaxError - syntax error, unexpected local variable or method, expecting ')'
+            params[:user][:password]
+            ^~~~~~
+/Users/dennislee/app-academy/classwork/w7d2/music/app/controllers/sessions_controller.rb:12: syntax error, unexpected ')', expecting `end'
+        )
+        ^:
+  app/controllers/sessions_controller.rb:11:in `'
+
+Started POST "/__better_errors/2dc8dd84e11d7ade/variables" for ::1 at 2023-08-08 16:12:32 -0400
+Started GET "/session/new" for ::1 at 2023-08-08 16:13:21 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected local variable or method, expecting ')'
+            params[:user][:password]
+            ^~~~~~
+/Users/dennislee/app-academy/classwork/w7d2/music/app/controllers/sessions_controller.rb:12: syntax error, unexpected ')', expecting `end'
+        )
+        ^:
+  app/controllers/sessions_controller.rb:11:in `'
+
+Started POST "/__better_errors/ff40c0dcf9962cea/variables" for ::1 at 2023-08-08 16:13:21 -0400
+Started GET "/session/new" for ::1 at 2023-08-08 16:13:51 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected local variable or method, expecting ')'
+            params[:user][:password]
+            ^~~~~~
+/Users/dennislee/app-academy/classwork/w7d2/music/app/controllers/sessions_controller.rb:12: syntax error, unexpected ')', expecting `end'
+        )
+        ^:
+  app/controllers/sessions_controller.rb:11:in `'
+
+Started POST "/__better_errors/b1fc9a92b88951ad/variables" for ::1 at 2023-08-08 16:13:51 -0400
+Started GET "/users" for ::1 at 2023-08-08 16:14:45 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/new" for ::1 at 2023-08-08 16:14:50 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 812)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/f04576cbe4d7a471/variables" for ::1 at 2023-08-08 16:14:50 -0400
+Started GET "/" for ::1 at 2023-08-08 16:16:42 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dennislee/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dennislee/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 303)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 1273)
+
+
+Started GET "/users" for ::1 at 2023-08-08 16:16:50 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for ::1 at 2023-08-08 16:17:59 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/" for ::1 at 2023-08-08 16:18:08 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 839)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/63b46a17996cc9ec/variables" for ::1 at 2023-08-08 16:18:08 -0400
+Started GET "/users" for ::1 at 2023-08-08 16:18:12 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for ::1 at 2023-08-08 16:18:13 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/new" for ::1 at 2023-08-08 16:18:20 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 675)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/dc1f7e38fa197d59/variables" for ::1 at 2023-08-08 16:18:20 -0400
+Started GET "/" for ::1 at 2023-08-08 16:22:14 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 865)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/863e562acccd97b9/variables" for ::1 at 2023-08-08 16:22:14 -0400
+Started GET "/new" for ::1 at 2023-08-08 16:22:26 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/new" for ::1 at 2023-08-08 16:24:28 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/users/new" for ::1 at 2023-08-08 16:25:01 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 830)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/9002fbaa8b6130a6/variables" for ::1 at 2023-08-08 16:25:01 -0400
+Started GET "/" for ::1 at 2023-08-08 16:25:03 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 684)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started GET "/" for ::1 at 2023-08-08 16:25:04 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 666)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/024207a4c61deb8c/variables" for ::1 at 2023-08-08 16:25:04 -0400
+Started GET "/" for ::1 at 2023-08-08 16:25:07 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 668)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/a43b355b4a4efb4f/variables" for ::1 at 2023-08-08 16:25:07 -0400
+Started GET "/" for ::1 at 2023-08-08 16:25:43 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 865)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:43:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/b73725da3ebc5627/variables" for ::1 at 2023-08-08 16:25:43 -0400
+Started GET "/" for ::1 at 2023-08-08 16:26:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 866)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:44:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/6e9b760972697be0/variables" for ::1 at 2023-08-08 16:26:00 -0400
+Started GET "/" for ::1 at 2023-08-08 16:26:51 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 758)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:47:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/a88f6b502acdd6d3/variables" for ::1 at 2023-08-08 16:26:52 -0400
+Started GET "/new" for ::1 at 2023-08-08 16:29:27 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/users/new" for ::1 at 2023-08-08 16:29:40 -0400
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 843)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:47:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/af37acf7a7d3db18/variables" for ::1 at 2023-08-08 16:29:41 -0400
+Started GET "/users/new" for ::1 at 2023-08-08 16:30:32 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 869)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/models/user.rb:47:in `'
+  app/controllers/application_controller.rb:11:in `current_user'
+  app/controllers/application_controller.rb:15:in `logged_in?'
+  app/controllers/application_controller.rb:29:in `require_logged_out'
+
+Started POST "/__better_errors/0298adba81f56e05/variables" for ::1 at 2023-08-08 16:30:32 -0400
+Started GET "/users/new" for ::1 at 2023-08-08 16:32:51 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 8.6ms | Allocations: 11905)
+
+
+
+ActionView::MissingTemplate - Missing template users/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+Searched in:
+  * "/Users/dennislee/app-academy/classwork/w7d2/music/app/views"
+Did you mean?  layouts/application:
+  app/controllers/users_controller.rb:18:in `new'
+
+Started POST "/__better_errors/91769aebad264608/variables" for ::1 at 2023-08-08 16:32:51 -0400
+Started GET "/" for ::1 at 2023-08-08 16:33:23 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1942)
+
+
+
+ActionView::MissingTemplate - Missing template users/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+Searched in:
+  * "/Users/dennislee/app-academy/classwork/w7d2/music/app/views"
+Did you mean?  layouts/application:
+  app/controllers/users_controller.rb:18:in `new'
+
+Started GET "/" for ::1 at 2023-08-08 16:33:24 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.4ms | Allocations: 1728)
+
+
+
+ActionView::MissingTemplate - Missing template users/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+Searched in:
+  * "/Users/dennislee/app-academy/classwork/w7d2/music/app/views"
+Did you mean?  layouts/application:
+  app/controllers/users_controller.rb:18:in `new'
+
+Started POST "/__better_errors/91580c345ca46a1d/variables" for ::1 at 2023-08-08 16:33:24 -0400
+Started GET "/new" for ::1 at 2023-08-08 16:33:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/users/new" for ::1 at 2023-08-08 16:33:36 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.5ms | Allocations: 1878)
+
+
+
+ActionView::MissingTemplate - Missing template users/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+Searched in:
+  * "/Users/dennislee/app-academy/classwork/w7d2/music/app/views"
+Did you mean?  layouts/application:
+  app/controllers/users_controller.rb:18:in `new'
+
+Started POST "/__better_errors/7b075d877ff811bf/variables" for ::1 at 2023-08-08 16:33:36 -0400
+Started GET "/users/new" for ::1 at 2023-08-08 16:45:15 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 702)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 6951)
+Completed 200 OK in 47ms (Views: 22.6ms | ActiveRecord: 9.5ms | Allocations: 20018)
+
+
+Started GET "/users/new" for ::1 at 2023-08-08 16:51:14 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 292)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1598)
+Completed 200 OK in 14ms (Views: 6.9ms | ActiveRecord: 0.4ms | Allocations: 3526)
+
+
+Started GET "/users/new" for ::1 at 2023-08-08 16:51:32 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 292)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1599)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 3498)
+
+
+Started GET "/users/new" for ::1 at 2023-08-08 16:59:07 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 666)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 4782)
+Completed 200 OK in 31ms (Views: 12.6ms | ActiveRecord: 8.6ms | Allocations: 17973)
+
+
+Started GET "/users/new" for ::1 at 2023-08-08 16:59:08 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 59)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 1664)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 0.5ms | Allocations: 2904)
+
+
+Started GET "/session/new" for ::1 at 2023-08-08 16:59:49 -0400
+
+SyntaxError - syntax error, unexpected local variable or method, expecting ')'
+            params[:user][:password]
+            ^~~~~~
+/Users/dennislee/app-academy/classwork/w7d2/music/app/controllers/sessions_controller.rb:11: syntax error, unexpected ')', expecting `end'
+        )
+        ^:
+  app/controllers/sessions_controller.rb:10:in `'
+
+Started POST "/__better_errors/28b5337b00ff9fd1/variables" for ::1 at 2023-08-08 16:59:49 -0400
+Started GET "/users/new" for ::1 at 2023-08-08 16:59:52 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 81)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 1805)
+Completed 200 OK in 17ms (Views: 11.4ms | ActiveRecord: 0.8ms | Allocations: 3179)
+
+
+Started GET "/users/new" for ::1 at 2023-08-08 17:00:06 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 292)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2525)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.4ms | Allocations: 4219)
+
+
+Started GET "/users/new" for ::1 at 2023-08-08 17:00:06 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 59)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 1663)
+Completed 200 OK in 14ms (Views: 7.9ms | ActiveRecord: 0.7ms | Allocations: 2873)
+
+
+Started GET "/users/new" for ::1 at 2023-08-08 17:00:07 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 59)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 1663)
+Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.5ms | Allocations: 2821)
+
+
